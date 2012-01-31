@@ -34,6 +34,18 @@ class Cards
 
     @deck = [bottom_cards, @deck, top_cards].flatten
   end
+
+  def cut_count
+    if @deck.last == 'A' || @deck.last == 'B'
+      value_of_last_card = 3
+    else
+      value_of_last_card = @deck.last
+    end
+
+    cards_to_reinsert = @deck.slice!(0..(value_of_last_card-1))
+
+    @deck.insert(-2, cards_to_reinsert).flatten!
+  end
 end
 
 cards = Cards.new
@@ -44,4 +56,7 @@ cards.shift_card_in_deck 'B', 2
 puts cards.deck.inspect
 
 cards.triple_cut
+puts cards.deck.inspect
+
+cards.cut_count
 puts cards.deck.inspect
