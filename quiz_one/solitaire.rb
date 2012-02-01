@@ -62,9 +62,9 @@ class Cards
       output_card_value
     end
 
-    alphabetized_output_card = (output_card_value + 9).to_s(36).upcase
+    alphabetised_output_card = (output_card_value + 9).to_s(36).upcase
 
-    return alphabetized_output_card
+    return alphabetised_output_card
   end
 
   private
