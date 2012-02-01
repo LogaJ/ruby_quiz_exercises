@@ -2,8 +2,7 @@ class Cards
   attr_reader :deck
 
   def initialize
-    @deck = [1, 2, 'A','B'] + (1..52).to_a
- #(1..52).to_a + ['A','B']
+    @deck = (1..52).to_a + ['A','B']
   end
 
   def shift_card_in_deck card, offset
@@ -49,44 +48,48 @@ class Cards
   end
 
   def find_output_letter
-    card_value = @deck.first
-    output_card = @deck[card_value]
+    top_card_value = @deck.first
+    return if is_a_string? top_card_value
 
-    check_class_of card_value, output_card #DOESN'T WORK IS EITHER FIRST CARD OR OUTPUT CARD IS A STRING
+    output_card_value = @deck[top_card_value]
+    return if is_a_string? output_card_value
 
-    letters_in_alphabet = 26
-    if output_card > letters_in_alphabet
-      alphabet_and_card_difference = output_card - letters_in_alphabet
-      output_card = alphabet_and_card_difference
+    amount_of_letters_in_alphabet = 26
+    if output_card_value > amount_of_letters_in_alphabet
+      output_cards_related_alphabet_value = output_card_value - amount_of_letters_in_alphabet
+      output_card_value = output_cards_related_alphabet_value
     else
-      output_card
+      output_card_value
     end
 
-    alphabetized_output_card = (output_card + 9).to_s(36).upcase
+    alphabetized_output_card = (output_card_value + 9).to_s(36).upcase
 
     return alphabetized_output_card
   end
 
   private
-  def check_class_of card_value, output_card
-    if card_value.class == String || output_card.class == String
-      puts "Output card wasn't a number."
+  def is_a_string? card
+    if (card.is_a?(String)) 
+      puts "#{card} isn not a number." 
+      return true
     end
+    return nil
   end
+
 end
 
 cards = Cards.new
-#cards.shift_card_in_deck 'A', 1
-#puts cards.deck.inspect
+cards.shift_card_in_deck 'A', 1
+puts cards.deck.inspect
 
-#cards.shift_card_in_deck 'B', 2
-#puts cards.deck.inspect
+cards.shift_card_in_deck 'B', 2
+puts cards.deck.inspect
 
-#cards.triple_cut
-#puts cards.deck.inspect
+cards.triple_cut
+puts cards.deck.inspect
 
-#cards.cut_count
-#puts cards.deck.inspect
+cards.cut_count
+puts cards.deck.inspect
 
-cards.find_output_letter
-#puts cards.deck.inspect
+puts cards.find_output_letter
+puts cards.deck.inspect
