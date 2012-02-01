@@ -70,7 +70,7 @@ class Cards
   private
   def is_a_string? card
     if (card.is_a?(String)) 
-      puts "#{card} isn not a number." 
+      puts "#{card} is not a number." 
       return true
     end
     return nil
