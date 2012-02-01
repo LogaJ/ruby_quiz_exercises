@@ -75,5 +75,4 @@ class Cards
     end
     return nil
   end
-
 end
