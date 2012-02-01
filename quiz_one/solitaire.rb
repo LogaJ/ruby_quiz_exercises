@@ -77,19 +77,3 @@ class Cards
   end
 
 end
-
-cards = Cards.new
-cards.shift_card_in_deck 'A', 1
-puts cards.deck.inspect
-
-cards.shift_card_in_deck 'B', 2
-puts cards.deck.inspect
-
-cards.triple_cut
-puts cards.deck.inspect
-
-cards.cut_count
-puts cards.deck.inspect
-
-puts cards.find_output_letter
-puts cards.deck.inspect
