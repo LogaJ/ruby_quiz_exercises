@@ -3,7 +3,7 @@ require_relative 'prepare_message_for_encoding'
 class EncodeMessage
   include PrepareMessageForEncoding
 
-  def encode_message
+  def get_message
     original_message = []
 
     puts "Please enter your unencoded message."
@@ -12,10 +12,9 @@ class EncodeMessage
       original_message << char
     end
 
-   prepare_message_for_encoding original_message
-   puts @prept_message.inspect
+   prept_message = prepare_message_for_encoding original_message
   end
 end
 
 message = EncodeMessage.new
-message.encode_message
+message.get_message

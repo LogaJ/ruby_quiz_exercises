@@ -44,6 +44,6 @@ module PrepareMessageForEncoding
       end
 
     end
-    @prept_message = chracter_groups
+    return chracter_groups
   end
 end
